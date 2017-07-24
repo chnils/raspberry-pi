@@ -13,7 +13,7 @@ while True:
 	
 	if  (GPIO.input(22)):
 		GPIO.output(24,GPIO.HIGH)
-		print "hej"
+		print "hejj"
 	else: 
 		GPIO.output(24,GPIO.LOW)
 
