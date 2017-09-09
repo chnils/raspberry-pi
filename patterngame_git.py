@@ -4,6 +4,7 @@ import sys
 import random
 
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
 red_b = 14
 red_LED = 7
