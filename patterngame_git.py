@@ -98,8 +98,8 @@ def spelet():
 
         print('Repeat the sequence')
 
-
-        for b in range (0, sekvenslangd, 1):
+        b = 0
+        while (b<=sekvenslangd):
 
             testlist[b] = LEDpress()
 
@@ -111,6 +111,8 @@ def spelet():
                                     'Play again with new conditions: Type 2'
                                     'Abort game: Type 3'))
 
+                if svar ==1:
+                    b = sekvenslangd
 
                 if svar == 2:
                     ingame2 = False
@@ -119,7 +121,8 @@ def spelet():
                     ingame1 = False
                     ingame2 = False
 
-        print('Congratulations, you made it! Faboo')
+            b = b + 1
+
 
 
 
@@ -149,6 +152,10 @@ while ingame1:
     elif svarighetsgrad == 3:
         seconds = 0.4
 
+    start = int(input('Type "1" to start'))
+    time.sleep(1.5)
+
     spelet()
 
+print('Congratulations, you made it! Faboo')
 print('Thanks for playing!')
