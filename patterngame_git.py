@@ -4,7 +4,6 @@ import sys
 import random
 
 GPIO.setmode(GPIO.BCM)
-#Skriv in alla GPIO.setup() konfiguartioner.
 
 red_b = 14
 red_LED = 7
@@ -12,18 +11,25 @@ green_b = 18
 green_LED = 16
 yellow_b = 24
 yellow_LED = 26
+
+GPIO.setup(red_b,GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(red_LED,GPIO.OUT)
+GPIO.setup(green_b,GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(green_LED,GPIO.OUT)
+GPIO.setup(yellow_b,GPIO.IN, pull_up_down=GPIO.PUD_UP)
+GPIO.setup(yellow_LED,GPIO.OUT)
+
 setuplist = [red_b, red_LED, green_b, green_LED, yellow_b, yellow_LED]
-#En lista där första platsen är nummret till GPIOn kopplad till knappen som styr den första LEDn (väljs arbiträrt).
-#Nästa plats är nummret till GPIOn som går till motsvarande LED. Sen för nästkommande platser så upprepas mönstret för
-#knappar och motsvarande LEDs. Listan fylls i manuellt.
+#A list where the first slot represents the number of the GPIO linked to the button controlling the first LED (chosen arbitrarily).
+#The next slot is the number to the GPIO controlling said button.
+#The pattern then repeats for following combinations of button and LEDs. The list is filled manually.
 
 
-#metoder i spelet-------------------------------------------------------------------------------------------------------
+#methods in the game-------------------------------------------------------------------------------------------------------
 
-def LEDblink(LEDnummer, seconds): #LEDnummer får motsvara den GPIO som den LEDn är kopplad till.
+def LEDblink(LEDnummer, seconds):
 
-    # metoden som får raspberrien att kunna lysa upp en LED under en viss tid.
-    # komplettera med rätt GPIO nummer när breadbord layouten är klar.
+    # The method that makes an LED glow for a specified time.
 
     GPIO.output(LEDnummer, HIGH)
     time.sleep(seconds)
@@ -33,10 +39,10 @@ def LEDblink(LEDnummer, seconds): #LEDnummer får motsvara den GPIO som den LEDn
 
 
 
-def LEDpress(x):
-    # metoden som gör att LED lyser upp när motsvarande knapp trycks samt returnerar ett korrekt värde för just den LEDn
-    # komplettera med rätt GPIO nummer när breadbord layouten är klar
-    # Just nu bara anpassat för 3 LEDer
+def LEDpress():
+
+    # The method that makes an LED glow when the corresponding button is pressed and returns the correct GPIOnumber for that LED.
+    # Currently only made for three LEDs
 
     bool = True
     x = 0
@@ -73,23 +79,23 @@ def spelet():
         for k in range (0, sekvenslangd, 1):
             rand = random.randint(1,3)
             if rand == 1:
-                rand = setuplist[1] #GPIO numret till LED nr 1
+                rand = setuplist[1] #GPIO number for LED nr 1
             elif rand == 2:
-                rand = setuplist[3] #GPIO numret till LED nr 2
+                rand = setuplist[3] #GPIO number for LED nr 2
             elif rand == 3:
-                rand = setuplist[5] #GPIO numret till LED nr 3
+                rand = setuplist[5] #GPIO number for LED nr 3
 
             answerlist[k] = rand
 
             LEDblink(answerlist[k], seconds)
 
-        repeat = input('Vill du se sekvensen igen? Ja = Y, Nej = N')
+        repeat = input('Do you want to see the sequence again? Yes = Y, No = N')
         if repeat == 'Y':
             for k in range (0, sekvenslangd, 1):
                 LEDblink(answerlist[k], seconds)
 
 
-        print('Repetera sekvensen')
+        print('Repeat the sequence')
 
 
         for b in range (0, sekvenslangd, 1):
@@ -100,9 +106,9 @@ def spelet():
                 print ('OK')
 
             else:
-                svar = int(input('Fel, spela igen med samma forutsattningar: Skriv 1'
-                                    'spela igen med nya forutsattningar: Skriv 2'
-                                    'Avbryta spel: Skriv 3'))
+                svar = int(input('wrong, play again under the same circumstances: Type 1'
+                                    'Play again with new conditions: Type 2'
+                                    'Abort game: Type 3'))
 
 
                 if svar == 2:
@@ -112,27 +118,28 @@ def spelet():
                     ingame1 = False
                     ingame2 = False
 
-            print('Grattis! Du klarade det!')
+            print('Congratulations, you made it! Faboo')
 
 
 
 
-#spelets start--------------------------------------------------------------------------------------------------------
+#Start of the game--------------------------------------------------------------------------------------------------------
 
 ingame1 = True
 while ingame1:
 
-    sekvenslangd = int (input('Ange sekvenslängd'))
+    sekvenslangd = int (input('Specify length of sequence'))
 
     answerlist = [0]*sekvenslangd
-    # En lista som kommer fyllas med den sekvens som slumpas fram. Till en början bara en tom lista med längden
-    # sekvenslängd
+    # A list that will be filled with the randomized sequence. In the beginning just an empty list with the
+    # the legnth of sekvenslangd
 
     testlist = [0]*sekvenslangd
-    # En lista som fylls med den sekvens som spelaren skapar. Till en början bara en tom lista med längden
-    # sekvenslängd
+    # A list that will be filled with the sequence the player creates. In the beginning just an empty list
+    # with the lenght of sekvenslangd
 
-    svarighetsgrad = int (input('Ange svårighetsgrad 1 till 3 (1=lätt, 2=medium, 3=svårt)'))
+
+    svarighetsgrad = int (input('Specify difficulty setting, 1 to 3 (1=easy, 2=medium, 3=hard)'))
     seconds = 0
     if svarighetsgrad == 1:
         seconds = 1.2
@@ -143,4 +150,4 @@ while ingame1:
 
     spelet()
 
-print('Tack för att du spelade')
+print('Thanks for playing!')
