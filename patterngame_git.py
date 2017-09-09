@@ -157,6 +157,7 @@ while ingame1:
     time.sleep(1.5)
 
     spelet()
-
+    ingame1 = False
+    
 print('Congratulations, you made it! Faboo')
 print('Thanks for playing!')
