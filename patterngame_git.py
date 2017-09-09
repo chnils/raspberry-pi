@@ -31,9 +31,9 @@ def LEDblink(LEDnummer, seconds):
 
     # The method that makes an LED glow for a specified time.
 
-    GPIO.output(LEDnummer, HIGH)
+    GPIO.output(LEDnummer, GPIO.HIGH)
     time.sleep(seconds)
-    GPIO.output(LEDnummer, LOW)
+    GPIO.output(LEDnummer, GPIO.LOW)
     time.sleep(0.1)
 
 
@@ -48,23 +48,23 @@ def LEDpress():
     x = 0
     while bool:
         if GPIO.input(setuplist[0])==False:
-            GPIO.output(setuplist[1]), HIGH)
+            GPIO.output(setuplist[1]), GPIO.HIGH)
             time.sleep(0.5)
-            GPIO.output(setuplist[1]), LOW)
+            GPIO.output(setuplist[1]), GPIO.LOW)
             bool = False
             x = 1
 
         if GPIO.input(setuplist[2])==False:
-            GPIO.output(setuplist[3], HIGH)
+            GPIO.output(setuplist[3], GPIO.HIGH)
             time.sleep(0.5)
-            GPIO.output(setuplist[3], LOW)
+            GPIO.output(setuplist[3], GPIO.LOW)
             bool = False
             x = 3
 
         if GPIO.input(setuplist[4])==False:
-            GPIO.output(setuplist[5], HIGH)
+            GPIO.output(setuplist[5], GPIO.HIGH)
             time.sleep(0.5)
-            GPIO.output(setuplist[5], LOW)
+            GPIO.output(setuplist[5], GPIO.LOW)
             bool = False
             x = 5
 
