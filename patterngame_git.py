@@ -99,7 +99,7 @@ def spelet():
         print('Repeat the sequence')
 
         b = 0
-        while (b<=sekvenslangd):
+        while (b<sekvenslangd):
 
             testlist[b] = LEDpress()
 
