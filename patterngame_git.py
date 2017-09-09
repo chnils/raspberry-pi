@@ -107,8 +107,8 @@ def spelet():
                 print ('OK')
 
             else:
-                svar = int(input('wrong, play again under the same circumstances: Type 1', \n ,
-                                    'Play again with new conditions: Type 2', \n ,
+                svar = int(input('wrong, play again under the same circumstances: Type 1', "\n" ,
+                                    'Play again with new conditions: Type 2', "\n" ,
                                     'Abort game: Type 3'))
 
                 if svar ==1:
