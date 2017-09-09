@@ -119,7 +119,7 @@ def spelet():
                     ingame1 = False
                     ingame2 = False
 
-            print('Congratulations, you made it! Faboo')
+        print('Congratulations, you made it! Faboo')
 
 
 
