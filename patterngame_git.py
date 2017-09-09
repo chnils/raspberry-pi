@@ -48,9 +48,9 @@ def LEDpress():
     x = 0
     while bool:
         if GPIO.input(setuplist[0])==False:
-            GPIO.output(setuplist[1]), GPIO.HIGH)
+            GPIO.output(setuplist[1], GPIO.HIGH)
             time.sleep(0.5)
-            GPIO.output(setuplist[1]), GPIO.LOW)
+            GPIO.output(setuplist[1], GPIO.LOW)
             bool = False
             x = 1
 
