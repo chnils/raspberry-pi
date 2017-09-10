@@ -102,8 +102,6 @@ def spelet():
         counter = 0
         while (b < sekvenslangd):
 
-            counter = counter + 1
-
             testlist[b] = LEDpress()
 
             if testlist[b] == answerlist[b]:
@@ -111,7 +109,7 @@ def spelet():
 
             else:
                 b = sekvenslangd
-                counter = -1
+                counter = -(sekvenslangd + 1)
 
             b = b + 1
             counter = counter + 1
@@ -120,7 +118,7 @@ def spelet():
         if counter == sekvenslangd:
             print ('Congratulations, you made it! Faboo!')
 
-        if counter < sekvenslangd:
+        elif counter < sekvenslangd:
             print ('Sorry mate, thats the wrong colour!')
 
         ingame2 = False
