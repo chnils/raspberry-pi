@@ -164,9 +164,9 @@ while ingame1:
                       'Play again with new conditions, Type 2' "\n"
                       'Abort game, Type 3'))
     if svar == 1:
-        replay_same_conditions = True
-    if svar == 2:
         replay_same_conditions = False
+    if svar == 2:
+        replay_same_conditions = True
     if svar == 3:
         ingame1 = False
 
