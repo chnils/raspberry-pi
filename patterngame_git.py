@@ -99,7 +99,10 @@ def spelet():
         print('Repeat the sequence')
 
         b = 0
-        while (b<sekvenslangd):
+        counter = 0
+        while (b < sekvenslangd):
+
+            counter = counter + 1
 
             testlist[b] = LEDpress()
 
@@ -107,57 +110,67 @@ def spelet():
                 print ('OK')
 
             else:
-                svar = int(input('wrong, play again under the same circumstances: Type 1' "\n" 
-                                    'Play again with new conditions: Type 2' "\n" 
-                                    'Abort game: Type 3'))
-
-                if svar ==1:
-                    b = sekvenslangd
-
-                if svar == 2:
-                    ingame2 = False
-
-                elif svar == 3:
-                    ingame1 = False
-                    ingame2 = False
+                b = sekvenslangd
+                counter = -1
 
             b = b + 1
+            counter = counter + 1
+
+
+        if counter == sekvenslangd:
+            print ('Congratulations, you made it! Faboo!')
+
+        if counter < sekvenslangd:
+            print ('Sorry mate, thats the wrong colour!')
 
         ingame2 = False
 
 
 
 
-#Start of the game--------------------------------------------------------------------------------------------------------
+#Start of the game----------------------------------------------------------------------------------------------------
 
+replay_same_conditions = True
 ingame1 = True
+
 while ingame1:
+    if replay_same_conditions == True:
+        sekvenslangd = int (input('Specify length of sequence'))
 
-    sekvenslangd = int (input('Specify length of sequence'))
+        answerlist = [0]*sekvenslangd
+        # A list that will be filled with the randomized sequence. In the beginning just an empty list with the
+        # the legnth of sekvenslangd
 
-    answerlist = [0]*sekvenslangd
-    # A list that will be filled with the randomized sequence. In the beginning just an empty list with the
-    # the legnth of sekvenslangd
-
-    testlist = [0]*sekvenslangd
-    # A list that will be filled with the sequence the player creates. In the beginning just an empty list
-    # with the lenght of sekvenslangd
+        testlist = [0]*sekvenslangd
+        # A list that will be filled with the sequence the player creates. In the beginning just an empty list
+        # with the lenght of sekvenslangd
 
 
-    svarighetsgrad = int (input('Specify difficulty setting, 1 to 3 (1=easy, 2=medium, 3=hard)'))
-    seconds = 0
-    if svarighetsgrad == 1:
-        seconds = 1.2
-    elif svarighetsgrad == 2:
-        seconds = 0.75
-    elif svarighetsgrad == 3:
-        seconds = 0.4
+        svarighetsgrad = int (input('Specify difficulty setting, 1 to 3 (1=easy, 2=medium, 3=hard)'))
+        seconds = 0
+        if svarighetsgrad == 1:
+            seconds = 1.2
+        elif svarighetsgrad == 2:
+            seconds = 0.75
+        elif svarighetsgrad == 3:
+            seconds = 0.4
 
     start = int(input('Type "1" to start'))
     time.sleep(1.5)
 
     spelet()
-    ingame1 = False
 
-print('Congratulations, you made it! Faboo')
+    time.sleep(2)
+
+    svar = int(input('Play again under the same circumstances, Type 1' "\n" 
+                      'Play again with new conditions, Type 2' "\n"
+                      'Abort game, Type 3'))
+    if svar == 1:
+        replay_same_conditions = True
+    if svar == 2:
+        replay_same_conditions = False
+    if svar == 3:
+        ingame1 = False
+
+
 print('Thanks for playing!')
