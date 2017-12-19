@@ -22,7 +22,7 @@ while True:
         GPIO.output(13, 0)
         time.sleep(0.1)
 
-    while(a)
+    while(a):
             print "Rotating both motors in clockwise direction"
             GPIO.output(5,1)
             GPIO.output(7,0)
