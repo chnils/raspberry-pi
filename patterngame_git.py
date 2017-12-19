@@ -90,8 +90,8 @@ def spelet():
 
             LEDblink(answerlist[k], seconds)
 
-        repeat = input('Do you want to see the sequence again? Yes = 1, No = 2')
-        if repeat == '1':
+        repeat = int(input('Do you want to see the sequence again? Yes = 1, No = 2'))
+        if repeat == 1:
             for k in range (0, sekvenslangd, 1):
                 LEDblink(answerlist[k], seconds)
 
