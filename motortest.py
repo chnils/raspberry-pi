@@ -12,7 +12,7 @@ a = False
 
 while True:
 
-    if GPIO.input(18) == False:
+    if GPIO.input(12) == False:
         a = True
         time.sleep(0.1)
     else:
