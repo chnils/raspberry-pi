@@ -28,27 +28,25 @@ while True:
             GPIO.output(7,0)
             GPIO.output(11,1)
             GPIO.output(13,0)
-            time.sleep(2)     #One second delay
+            time.sleep(4)     #One second delay
 
             print "Rotating right motor backwards"
             GPIO.output(5,0)
             GPIO.output(7,0)
             GPIO.output(11,0)
             GPIO.output(13,1)
-            time.sleep(2)
+            time.sleep(4)
 
-            print
-            "Rotating left motor forwards"
+            print "Rotating left motor forwards"
             GPIO.output(5, 1)
             GPIO.output(7, 0)
             GPIO.output(11, 0)
             GPIO.output(13, 0)
-            time.sleep(2)
+            time.sleep(4)
 
-            print
-            "Rotating left motor backwards"
+            print "Rotating left motor backwards"
             GPIO.output(5, 0)
             GPIO.output(7, 1)
             GPIO.output(11, 0)
             GPIO.output(13, 0)
-            time.sleep(2)
+            time.sleep(4)
