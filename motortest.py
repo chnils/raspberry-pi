@@ -50,3 +50,10 @@ while True:
             GPIO.output(11, 0)
             GPIO.output(13, 0)
             time.sleep(4)
+
+            print "sleep"
+            GPIO.output(5, 0)
+            GPIO.output(7, 0)
+            GPIO.output(11, 0)
+            GPIO.output(13, 0)
+            time.sleep(4)
