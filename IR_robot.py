@@ -23,15 +23,13 @@ while True:
     j = GPIO.input(12)
     if j == 1:  # Robot is activated when button is pressed
         flag = 1
-        print
-        "Robot Activated", j
+        print "Robot Activated", j
 
     while flag == 1:
         i = GPIO.input(3)  # Listening for output from right IR sensor
         k = GPIO.input(16)  # Listening for output from left IR sensor
         if i == 0:  # Obstacle detected on right IR sensor
-            print
-            "Obstacle detected on Right", i
+            print "Obstacle detected on Right", i
             # Move in reverse direction
             GPIO.output(5, 1)  # Left motor turns anticlockwise
             GPIO.output(7, 0)
@@ -46,8 +44,7 @@ while True:
             GPIO.output(13, 0)
             time.sleep(2)
         if k == 0:  # Obstacle detected on left IR sensor
-            print
-            "Obstacle detected on Left", k
+            print "Obstacle detected on Left", k
             GPIO.output(5, 1)
             GPIO.output(7, 0)
             GPIO.output(11, 1)
@@ -61,8 +58,7 @@ while True:
             time.sleep(2)
 
         elif i == 0 and k == 0:
-            print
-            "Obstacles on both sides"
+            print "Obstacles on both sides"
             GPIO.output(5, 1)
             GPIO.output(7, 0)
             GPIO.output(11, 1)
@@ -76,8 +72,7 @@ while True:
             time.sleep(4)
 
         elif i == 1 and k == 1:  # No obstacles, robot moves forward
-            print
-            "No obstacles", i
+            print "No obstacles", i
             # Robot moves forward
             GPIO.output(5, 0)
             GPIO.output(7, 1)
@@ -87,8 +82,7 @@ while True:
         j = GPIO.input(12)
         if j == 1:  # De activate robot on pushin the button
             flag = 0
-            print
-            "Robot De-Activated", j
+            print "Robot De-Activated", j
             GPIO.output(5, 0)
             GPIO.output(7, 0)
             GPIO.output(11, 0)
