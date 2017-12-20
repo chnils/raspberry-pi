@@ -6,14 +6,14 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(3, GPIO.IN)                            #Right sensor connection
 GPIO.setup(16, GPIO.IN, pull_up_down=GPIO.PUD_UP) #Left sensor connection
 while True:
-          i=GPIO.input(3)                         #Reading output of right IR s$
-          j=GPIO.input(16)                        #Reading output of left IR s$
-          if i==0:                                #Right IR sensor detects an o$
+          i=GPIO.input(3)                         #Reading output of right IR sensor
+          j=GPIO.input(16)                        #Reading output of left IR sensor
+          if i==0:                                #Right IR sensor detects an object
                 print "Obstacle detected on Left",i
                 time.sleep(0.1)
                 #rand = random.randint(1,3)
                 #if rand == 1:
                         #print "hej"
-          if j==0:                              #Left IR sensor detects an obje$
+          if j==0:                              #Left IR sensor detects an object
                print "Obstacle detected on Right",j
                time.sleep(0.1)
