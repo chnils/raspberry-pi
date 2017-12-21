@@ -31,10 +31,10 @@ while True:
         if i == 0:  # Obstacle detected on right IR sensor
             print "Obstacle detected on Right", i
             # Move in reverse direction
-            GPIO.output(5, 1)  # Left motor turns anticlockwise
-            GPIO.output(7, 0)
-            GPIO.output(11, 1)  # Right motor turns clockwise
-            GPIO.output(13, 0)
+            GPIO.output(5, 0)  # Left motor turns anticlockwise
+            GPIO.output(7, 1)
+            GPIO.output(11, 0)  # Right motor turns clockwise
+            GPIO.output(13, 1)
             time.sleep(1)
 
             # Turn robot left
@@ -45,10 +45,10 @@ while True:
             time.sleep(2)
         if k == 0:  # Obstacle detected on left IR sensor
             print "Obstacle detected on Left", k
-            GPIO.output(5, 1)
-            GPIO.output(7, 0)
-            GPIO.output(11, 1)
-            GPIO.output(13, 0)
+            GPIO.output(5, 0)
+            GPIO.output(7, 1)
+            GPIO.output(11, 0)
+            GPIO.output(13, 1)
             time.sleep(1)
 
             GPIO.output(5, 1)
@@ -59,10 +59,10 @@ while True:
 
         elif i == 0 and k == 0:
             print "Obstacles on both sides"
-            GPIO.output(5, 1)
-            GPIO.output(7, 0)
-            GPIO.output(11, 1)
-            GPIO.output(13, 0)
+            GPIO.output(5, 0)
+            GPIO.output(7, 1)
+            GPIO.output(11, 0)
+            GPIO.output(13, 1)
             time.sleep(2)
 
             GPIO.output(5, 1)
@@ -74,10 +74,10 @@ while True:
         elif i == 1 and k == 1:  # No obstacles, robot moves forward
             print "No obstacles", i
             # Robot moves forward
-            GPIO.output(5, 0)
-            GPIO.output(7, 1)
-            GPIO.output(11, 0)
-            GPIO.output(13, 1)
+            GPIO.output(5, 1)
+            GPIO.output(7, 0)
+            GPIO.output(11, 1)
+            GPIO.output(13, 0)
             time.sleep(0.5)
         j = GPIO.input(12)
         if j == 1:  # De activate robot on pushin the button
